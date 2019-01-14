@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
-graphdoc -e https://ocelot.cat/api --header "Authorization: Bearer ce01f20d-92ab-4433-b663-3d1d85713c63" -o tmp/docs
+set -e
+
+source .env
+graphdoc --endpoint https://ocelot.cat/api \
+  --header "Authorization: Bearer $API_KEY" \
+  --output tmp/docs
 cp -a tmp/docs/* .
 rm -rf tmp/docs
